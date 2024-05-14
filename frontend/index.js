@@ -14,8 +14,8 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   
     let mentors = res1.data 
     let learners = res2.data
-    console.log(mentors)
-    console.log(learners)
+    // console.log(mentors)
+    // console.log(learners)
 
   // 👆 ==================== TASK 1 END ====================== 👆
 
@@ -41,7 +41,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
    */
   function mentorIdToName(mentorID, mentors){
     const mentor = mentors.find(mentor => mentor.id === mentorID)
-    console.log(mentor)
+    // console.log(mentor)
     return `${mentor.firstName} ${mentor.lastName}`
   }
   const learnerMentorCombo = learners.map(learner => {
@@ -49,8 +49,8 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
       learner.mentors.map(mentorID => mentorIdToName(mentorID, mentors))
     }
   })
-  console.log(mentorIdToName)
-  console.log(learnerMentorCombo)
+  // console.log(mentorIdToName)
+  // console.log(learnerMentorCombo)
 
   // 👆 ==================== TASK 2 END ====================== 👆
 
@@ -71,8 +71,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     // ❗ Inspect the mock site closely to understand what the initial texts and classes look like!
 
     const card = document.createElement('div')
-    card.classList.add('card')
-    // card.classList.toggle('Selected')
+      card.classList.add('card')
 
     const heading = document.createElement('h3')
       heading.textContent = `${learner.fullName}` // `, ID ${learner.id}` not needed
@@ -93,7 +92,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
         const mentorName = document.createElement('li')
         mentorName.textContent = `${mentor.firstName} ${mentor.lastName}`
         mentorsList.appendChild(mentorName)
-        console.log(learner.mentors)
+        // console.log(learner.mentors)
       }
       // I'll need to figure a way to create a more efficient way to not repeat the const mentor from the mentorIdToName function
       // Or better yet let there be a variable with that allows it to be put into the function and the mentorList...hmm
