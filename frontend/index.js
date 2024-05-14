@@ -24,6 +24,15 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   // 🧠 Combine learners and mentors.
   // ❗ At this point the learner objects only have the mentors' IDs. // learners.mentors array only gives mentorId(s)
   // ❗ Fix the `learners` array so that each learner ends up with this exact structure:
+    // {
+  //   id: 6,
+  //   fullName: "Bob Johnson",
+  //   email: "bob.johnson@example.com",
+  //   mentors: [
+  //     "Bill Gates",
+  //     "Grace Hopper"
+  //   ]`
+  // }
 
   /**
    * create a function to get the mentor ids to return mentor first name and mentor last name
@@ -32,6 +41,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
    */
   function mentorIdToName(mentorID, mentors){
     const mentor = mentors.find(mentor => mentor.id === mentorID)
+    console.log(mentor)
     return `${mentor.firstName} ${mentor.lastName}`
   }
   const learnerMentorCombo = learners.map(learner => {
@@ -41,7 +51,7 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   })
   console.log(mentorIdToName)
   console.log(learnerMentorCombo)
-  
+
   // 👆 ==================== TASK 2 END ====================== 👆
 
   const cardsContainer = document.querySelector('.cards')
@@ -62,10 +72,26 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
 
     const card = document.createElement('div')
     const heading = document.createElement('h3')
+      heading.textContent = `${learner.fullName}, ID: ${learner.id}`
+      card.appendChild(heading)
     const email = document.createElement('div')
+      email.textContent = `Email: ${learner.email}`
+      card.appendChild(email)
     const mentorsHeading = document.createElement('h4')
+      mentorsHeading.textContent = "Mentors"
     const mentorsList = document.createElement('ul')
-
+    
+    for (let mentor of learner.mentors) {
+      const mentorName = document.createElement('li')
+      mentorName.textContent = `${mentor.firstName} ${mentor.lastname}`
+      mentorsList.appendChild(mentorName)
+    }
+      card.appendChild(mentorsHeading)
+      card.appendChild(mentorsList)    
+    
+    
+    
+    
     // 👆 ==================== TASK 3 END ====================== 👆
 
     // 👆 WORK ONLY ABOVE THIS LINE 👆
