@@ -22,18 +22,26 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
   // 👇 ==================== TASK 2 START ==================== 👇
 
   // 🧠 Combine learners and mentors.
-  // ❗ At this point the learner objects only have the mentors' IDs.
+  // ❗ At this point the learner objects only have the mentors' IDs. // learners.mentors array only gives mentorId(s)
   // ❗ Fix the `learners` array so that each learner ends up with this exact structure:
-  // {
-  //   id: 6,
-  //   fullName: "Bob Johnson",
-  //   email: "bob.johnson@example.com",
-  //   mentors: [
-  //     "Bill Gates",
-  //     "Grace Hopper"
-  //   ]`
-  // }
 
+  /**
+   * create a function to get the mentor ids to return mentor first name and mentor last name
+   * then create a function for learner mentor combo (probably map)
+   * ---> map over the learners array to create a new array that will inject the previous function's mentor names into learners.mentors array
+   */
+  function mentorIdToName(mentorID, mentors){
+    const mentor = mentors.find(mentor => mentor.id === mentorID)
+    return `${mentor.firstName} ${mentor.lastName}`
+  }
+  const learnerMentorCombo = learners.map(learner => {
+    return { ...learner, mentors:
+      learner.mentors.map(mentorID => mentorIdToName(mentorID, mentors))
+    }
+  })
+  console.log(mentorIdToName)
+  console.log(learnerMentorCombo)
+  
   // 👆 ==================== TASK 2 END ====================== 👆
 
   const cardsContainer = document.querySelector('.cards')
