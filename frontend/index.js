@@ -73,24 +73,31 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     const card = document.createElement('div')
     card.classList.add('card')
     // card.classList.toggle('Selected')
+
     const heading = document.createElement('h3')
-      heading.textContent = `${learner.fullName}, ID: ${learner.id}`
+      heading.textContent = `${learner.fullName}` // `, ID ${learner.id}` not needed
       card.appendChild(heading)
+
     const email = document.createElement('div')
       email.textContent = `Email: ${learner.email}`
       card.appendChild(email)
+
     const mentorsHeading = document.createElement('h4')
+      mentorsHeading.classList.add('closed')
       mentorsHeading.textContent = "Mentors"
       card.appendChild(mentorsHeading)
+
     const mentorsList = document.createElement('ul')
-    
-    for (let mentor of learner.mentors) {
-      const mentorName = document.createElement('li')
-      mentorName.textContent = `${learnerMentorCombo}`
-      mentorsList.appendChild(mentorName)
-      console.log(learner.mentors)
-    }
-      
+      for (let mentorID of learner.mentors) {
+        const mentor = mentors.find(mentor => mentor.id === mentorID)
+        const mentorName = document.createElement('li')
+        mentorName.textContent = `${mentor.firstName} ${mentor.lastName}`
+        mentorsList.appendChild(mentorName)
+        console.log(learner.mentors)
+      }
+      // I'll need to figure a way to create a more efficient way to not repeat the const mentor from the mentorIdToName function
+      // Or better yet let there be a variable with that allows it to be put into the function and the mentorList...hmm
+      // Should be simple, but... it just not coming to me...overthinking it or I'm just done with continuing, lol.
     
     
     
