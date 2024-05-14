@@ -71,6 +71,8 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
     // ❗ Inspect the mock site closely to understand what the initial texts and classes look like!
 
     const card = document.createElement('div')
+    card.classList.add('card')
+    // card.classList.toggle('Selected')
     const heading = document.createElement('h3')
       heading.textContent = `${learner.fullName}, ID: ${learner.id}`
       card.appendChild(heading)
@@ -79,15 +81,16 @@ async function sprintChallenge5() { // Note the async keyword so you can use `aw
       card.appendChild(email)
     const mentorsHeading = document.createElement('h4')
       mentorsHeading.textContent = "Mentors"
+      card.appendChild(mentorsHeading)
     const mentorsList = document.createElement('ul')
     
     for (let mentor of learner.mentors) {
       const mentorName = document.createElement('li')
-      mentorName.textContent = `${mentor.firstName} ${mentor.lastname}`
+      mentorName.textContent = `${learnerMentorCombo}`
       mentorsList.appendChild(mentorName)
+      console.log(learner.mentors)
     }
-      card.appendChild(mentorsHeading)
-      card.appendChild(mentorsList)    
+      
     
     
     
